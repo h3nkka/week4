@@ -9,12 +9,17 @@ namespace week4
 {
     public static class ItMath
     {
-        public static bool IsNumber(string input)
+        public static bool IsNumber(string input, CultureInfo culture1)
         {
-            NumberFormatInfo nfi = new NumberFormatInfo();
-            nfi.NumberDecimalSeparator = ",";
-            int kek = Int32.Parse(input);
-            return true;
+            try
+            {
+                float.Parse(input, culture1.NumberFormat);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
         }
     }
 }
